@@ -1,0 +1,20 @@
+game.StarterGui:SetCore("SendNotification", {
+	Title = "WH · 99 Nights · God Mode",
+	Text = "Done, now you have infinity health",
+	Icon = "",
+	Duration = 999,
+	Button1 = "Ok, Thanks!"
+})
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local DamagePlayerEvent = game:GetService("ReplicatedStorage").RemoteEvents.DamagePlayer
+while true do
+	task.wait(.5)
+	local Character = LocalPlayer.Character
+	if Character and Character:FindFirstChildOfClass("Humanoid") then
+		local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+		if Humanoid.Health ~= math.huge then
+			DamagePlayerEvent:FireServer(-math.huge)
+		end
+	end
+end
